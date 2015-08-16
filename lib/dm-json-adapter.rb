@@ -1,2 +1,2 @@
-require 'dm-yaml-adapter/adapter'
-require 'dm-yaml-adapter/core_ext/class'
+require 'dm-json-adapter/adapter'
+require 'dm-json-adapter/core_ext/class'

@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-require File.expand_path('../lib/dm-yaml-adapter/version', __FILE__)
+require File.expand_path('../lib/dm-json-adapter/version', __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.name        = 'dm-yaml-adapter'
-  gem.summary     = 'yaml3 Adapter for DataMapper'
+  gem.name        = 'dm-json-adapter'
+  gem.summary     = 'JSON Adapter for DataMapper'
   gem.description = gem.summary
   gem.email       = 'dan.kubb@gmail.com'
   gem.homepage    = 'http://datamapper.org'
@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.extra_rdoc_files = %w[ LICENSE ]
 
   gem.require_paths = %w[ lib ]
-  gem.version       = DataMapper::YamlAdapter::VERSION
+  gem.version       = DataMapper::JsonAdapter::VERSION
 
   gem.add_runtime_dependency('dm-core', [ '~> 1.3.0.beta' ])
 

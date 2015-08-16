@@ -1,5 +1,5 @@
 class Class
-  def to_yaml(options = {})
-    name.to_yaml(options)
+  def to_json(options = {})
+    name.to_json(options)
   end
 end

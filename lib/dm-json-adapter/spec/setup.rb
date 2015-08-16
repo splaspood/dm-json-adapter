@@ -1,4 +1,4 @@
-require 'dm-yaml-adapter'
+require 'dm-json-adapter'
 require 'dm-core/spec/setup'
 
 require 'tempfile'
@@ -7,13 +7,13 @@ module DataMapper
   module Spec
     module Adapters
 
-      class YamlAdapter < Adapter
+      class JsonAdapter < Adapter
         def connection_uri
-          "yaml://#{Dir.tmpdir}/#{storage_name}"
+          "json://#{Dir.tmpdir}/#{storage_name}"
         end
       end
 
-      use YamlAdapter
+      use JsonAdapter
 
     end
   end

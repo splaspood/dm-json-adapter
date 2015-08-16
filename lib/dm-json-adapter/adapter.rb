@@ -1,9 +1,9 @@
-require 'yaml'
+require 'json'
 require 'dm-core'
 
 module DataMapper
   module Adapters
-    class YamlAdapter < AbstractAdapter
+    class JsonAdapter < AbstractAdapter
       # @api semipublic
       def create(resources)
         model = resources.first.model
@@ -83,8 +83,8 @@ module DataMapper
       #
       # @api private
       def records_for(model)
-        file = yaml_file(model)
-        file.readable? && YAML.load_file(file) || []
+        file = json_file(model)
+        file.readable? && JSON.load(file) || []
       end
 
       # Writes all records to a file
@@ -97,22 +97,22 @@ module DataMapper
       #
       # @api private
       def write_records(model, records)
-        yaml_file(model).open('w') do |fh|
-          YAML.dump(records, fh)
+        json_file(model).open('w') do |fh|
+          JSON.dump(records, fh)
         end
       end
 
       # Given a model, gives the filename to be used for record storage
       #
       # @example
-      #   yaml_file(Article) #=> "/path/to/files/articles.yml"
+      #   json_file(Article) #=> "/path/to/files/articles.yml"
       #
       # @param [#storage_name] model
       #   The model to be used to determine the file name.
       #
       # @api private
-      def yaml_file(model)
-        @path.join("#{model.storage_name(name)}.yml")
+      def json_file(model)
+        @path.join("#{model.storage_name(name)}.json")
       end
 
       # Get the maximum id to use as a base when creating new records
@@ -138,8 +138,8 @@ module DataMapper
         end
       end
 
-    end # class YamlAdapter
+    end # class JsonAdapter
 
-    const_added(:YamlAdapter)
+    const_added(:JsonAdapter)
   end # module Adapters
 end # module DataMapper

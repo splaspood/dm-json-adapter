@@ -54,7 +54,7 @@ module DataMapper
       # @api semipublic
       def initialize(name, options = {})
         super
-        (@path = Pathname(@options[:path]).freeze).mkpath
+        (@path = Pathname(@options[:directory]).freeze).mkpath
       end
 
       # Retrieves all records for a model and yields them to a block.
@@ -84,7 +84,7 @@ module DataMapper
       # @api private
       def records_for(model)
         file = json_file(model)
-        file.readable? && JSON.load(file) || []
+        file.readable? && JSON.load(File.open(file, 'r')) || []
       end
 
       # Writes all records to a file
